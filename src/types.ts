@@ -1,0 +1,17 @@
+export type AIMode = "debate" | "podcast" | "philosophy" | "funny_clash";
+export type Speaker = "AI1" | "AI2";
+
+export interface Message {
+  id: string;
+  speaker: Speaker;
+  text: string;
+  timestamp: number;
+}
+
+export interface ConversationState {
+  isActive: boolean;
+  topic: string;
+  mode: AIMode;
+  messages: Message[];
+  currentSpeaker: Speaker;
+}

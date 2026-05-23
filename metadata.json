@@ -1,0 +1,6 @@
+{
+  "name": "Dual AI Voice",
+  "description": "Two distinct AI personalities debate and converse in real-time with automatically synthesized voices.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
