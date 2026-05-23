@@ -1,4 +1,4 @@
-export type AIMode = "debate" | "podcast" | "philosophy" | "funny_clash";
+export type AIMode = "debate" | "podcast" | "philosophy" | "funny_clash" | "task_force";
 export type Speaker = "AI1" | "AI2" | "USER";
 
 export interface Message {

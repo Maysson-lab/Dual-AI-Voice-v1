@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Play, Square, Settings, Mic2, Sparkles, Brain, Radio, Zap } from "lucide-react";
+import { Play, Square, Settings, Mic2, Sparkles, Brain, Radio, Zap, Briefcase } from "lucide-react";
 import { AIMode } from "../types";
 
 interface ControlPanelProps {
@@ -25,14 +25,16 @@ export function ControlPanel({ isActive, onStart, onStop, speed, onSpeedChange }
     debate: <Brain className="w-4 h-4" />,
     podcast: <Radio className="w-4 h-4" />,
     philosophy: <Sparkles className="w-4 h-4" />,
-    funny_clash: <Zap className="w-4 h-4" />
+    funny_clash: <Zap className="w-4 h-4" />,
+    task_force: <Briefcase className="w-4 h-4" />
   };
 
   const modeLabels = {
     debate: "Débat Logique",
     podcast: "Podcast Tech",
     philosophy: "Philosophie",
-    funny_clash: "Clash Internet"
+    funny_clash: "Clash Internet",
+    task_force: "Équipe d'Action"
   };
 
   return (

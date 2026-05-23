@@ -39,8 +39,13 @@ export function useSpeech(
       return () => clearTimeout(t);
     }
 
-    // Actual speech
-    const utterance = new SpeechSynthesisUtterance(currentMessage.text);
+    const cleanText = currentMessage.text.replace(/\[.*?\]/g, '').replace(/\*/g, '').trim();
+    if (!cleanText) {
+      setIsSpeaking(false);
+      onFinished();
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(cleanText);
     
     // Pick voices based on speaker
     const frenchVoices = voicesRef.current.filter(v => v.lang.startsWith('fr'));

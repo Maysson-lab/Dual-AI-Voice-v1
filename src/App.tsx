@@ -110,12 +110,14 @@ export default function App() {
             <div className="text-[10px] font-mono tracking-widest text-sky-400 self-start mb-2 uppercase">Système IA-1 / Logique</div>
             <AIAvatar 
               speaker="AI1" 
-              name={currentMode === 'debate' ? 'UNITÉ ANALYTIQUE' : currentMode === 'podcast' ? 'MODULE HÔTE' : currentMode === 'philosophy' ? 'LOGOS' : 'CŒUR ÉMOTIONNEL'}
+              name={currentMode === 'debate' ? 'UNITÉ ANALYTIQUE' : currentMode === 'podcast' ? 'MODULE HÔTE' : currentMode === 'philosophy' ? 'LOGOS' : currentMode === 'task_force' ? 'CHEF ORCHESTRE' : 'CŒUR ÉMOTIONNEL'}
               isActive={isActive && typingSpeaker === "AI1"} 
               isSpeaking={isActive && isSpeaking && activeSpeaker === "AI1"} 
               color="blue"
             />
-            <div className="text-xs text-center text-slate-400 italic mt-2 font-light">"Convergence probabiliste en cours..."</div>
+            <div className="text-xs text-center text-slate-400 italic mt-2 font-light">
+              {currentMode === 'task_force' ? '"Coordination des sous-agents..."' : '"Convergence probabiliste en cours..."'}
+            </div>
             
             <AudioVisualizer isSpeaking={isSpeaking && activeSpeaker === "AI1"} activeSpeaker="AI1" />
 
@@ -148,12 +150,14 @@ export default function App() {
             <div className="text-[10px] font-mono tracking-widest text-pink-400 self-end mb-2 uppercase">Système IA-2 / Créatif</div>
             <AIAvatar 
               speaker="AI2" 
-              name={currentMode === 'debate' ? 'UNITÉ SATIRIQUE' : currentMode === 'podcast' ? 'INVITÉ' : currentMode === 'philosophy' ? 'CHAOS' : 'PROTOCOLE DIVERGENT'}
+              name={currentMode === 'debate' ? 'UNITÉ SATIRIQUE' : currentMode === 'podcast' ? 'INVITÉ' : currentMode === 'philosophy' ? 'CHAOS' : currentMode === 'task_force' ? 'EXPERT TECH' : 'PROTOCOLE DIVERGENT'}
               isActive={isActive && typingSpeaker === "AI2"} 
               isSpeaking={isActive && isSpeaking && activeSpeaker === "AI2"} 
               color="orange"
             />
-            <div className="text-xs text-center text-slate-400 italic mt-2 font-light">"Traitement des abstractions à 1.2M/s"</div>
+            <div className="text-xs text-center text-slate-400 italic mt-2 font-light">
+              {currentMode === 'task_force' ? '"Exécution des outils..."' : '"Traitement des abstractions à 1.2M/s"'}
+            </div>
             
             <AudioVisualizer isSpeaking={isSpeaking && activeSpeaker === "AI2"} activeSpeaker="AI2" />
 
