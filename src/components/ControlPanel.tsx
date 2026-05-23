@@ -4,7 +4,7 @@ import { AIMode } from "../types";
 
 interface ControlPanelProps {
   isActive: boolean;
-  onStart: (topic: string, mode: AIMode) => void;
+  onStart: (topic: string, mode: AIMode, maxTurns: number) => void;
   onStop: () => void;
   speed: number;
   onSpeedChange: (speed: number) => void;
@@ -13,10 +13,11 @@ interface ControlPanelProps {
 export function ControlPanel({ isActive, onStart, onStop, speed, onSpeedChange }: ControlPanelProps) {
   const [topic, setTopic] = useState("");
   const [mode, setMode] = useState<AIMode>("debate");
+  const [maxTurns, setMaxTurns] = useState<number>(10);
 
   const handleStart = () => {
     if (topic.trim()) {
-      onStart(topic.trim(), mode);
+      onStart(topic.trim(), mode, maxTurns);
     }
   };
 
@@ -85,6 +86,22 @@ export function ControlPanel({ isActive, onStart, onStop, speed, onSpeedChange }
           onChange={(e) => onSpeedChange(parseFloat(e.target.value))}
           className="w-full cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none accent-sky-400"
         />
+      </div>
+
+      <div className="relative z-10 pt-4 border-t border-white/5">
+        <label className="text-[10px] font-mono uppercase tracking-widest text-slate-400 mb-4 flex justify-between">
+          <span>Tours Maximum</span>
+          <span className="text-pink-400 font-bold">{maxTurns === 0 ? "INFINI" : maxTurns}</span>
+        </label>
+        <input 
+          type="range" 
+          min="0" max="50" step="1" 
+          disabled={isActive}
+          value={maxTurns}
+          onChange={(e) => setMaxTurns(parseInt(e.target.value, 10))}
+          className="w-full cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none accent-pink-400 disabled:opacity-50"
+        />
+        <p className="text-[9px] text-slate-500 mt-2 font-mono">0 pour infini (Arrêt manuel)</p>
       </div>
 
       <div className="mt-2 relative z-10">

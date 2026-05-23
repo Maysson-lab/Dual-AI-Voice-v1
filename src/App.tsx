@@ -12,12 +12,14 @@ import { ControlPanel } from "./components/ControlPanel";
 export default function App() {
   const {
     messages,
+    streamingMessage,
     isActive,
     typingSpeaker,
     currentTopic,
     currentMode,
     startConversation,
     stopConversation,
+    sendIntervention,
     currentSpokenMessage,
     onMessageSpoken
   } = useSocket();
@@ -127,11 +129,13 @@ export default function App() {
         {/* Middle Area: Chat Board */}
         <div className="flex-1 flex flex-col min-h-0 glass-panel overflow-hidden drop-shadow-2xl">
           <ChatBoard 
-             messages={messages} 
+             messages={messages}
+             streamingMessage={streamingMessage}
              typingSpeaker={typingSpeaker} 
              topic={currentTopic}
              mode={currentMode}
              isActive={isActive}
+             onSendIntervention={sendIntervention}
           />
         </div>
 

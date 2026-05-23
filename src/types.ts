@@ -1,5 +1,5 @@
 export type AIMode = "debate" | "podcast" | "philosophy" | "funny_clash";
-export type Speaker = "AI1" | "AI2";
+export type Speaker = "AI1" | "AI2" | "USER";
 
 export interface Message {
   id: string;
@@ -14,4 +14,5 @@ export interface ConversationState {
   mode: AIMode;
   messages: Message[];
   currentSpeaker: Speaker;
+  maxTurns: number;
 }
