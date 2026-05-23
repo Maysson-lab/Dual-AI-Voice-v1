@@ -1,6 +1,6 @@
 {
-  "name": "Dual AI Voice",
-  "description": "Two distinct AI personalities debate and converse in real-time with automatically synthesized voices.",
+  "name": "Voix Dual IA",
+  "description": "Deux personnalités IA distinctes débattent et conversent en temps réel avec des voix synthétisées automatiquement, le tout dans une interface repensée et élégante.",
   "requestFramePermissions": ["microphone"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

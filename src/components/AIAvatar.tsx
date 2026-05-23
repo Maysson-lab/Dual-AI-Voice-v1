@@ -12,29 +12,32 @@ interface AIAvatarProps {
 }
 
 export function AIAvatar({ speaker, name, isActive, isSpeaking, color }: AIAvatarProps) {
-  const ringClass = color === "blue" ? "avatar-ring-cyan" : "avatar-ring-pink";
-  const glowTextClass = color === "blue" ? "glow-cyan" : "glow-pink";
-  const strokeColor = color === "blue" ? "#00f2ff" : "#ff007f";
+  const isBlue = color === "blue";
+  
+  const ringClass = isBlue ? "avatar-ring-cyan" : "avatar-ring-pink";
+  const glowTextClass = isBlue ? "text-sky-300 drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]" : "text-pink-300 drop-shadow-[0_0_10px_rgba(244,114,182,0.5)]";
   
   const Icon = speaker === "AI1" ? Cpu : Bot;
-
+  
+  // Adjusted text and styles for improved aesthetic
+  
   return (
     <div className="flex flex-col items-center justify-center relative w-full">
-      <div className={`relative w-[100px] h-[100px] rounded-full flex items-center justify-center mb-3 transition-opacity duration-300 ${isActive || isSpeaking ? 'avatar-ring ' + ringClass : 'opacity-50 blur-[0.5px]'}`}>
-        <Icon className={`w-12 h-12 transition-all duration-300 ${isSpeaking ? 'scale-110 drop-shadow-[0_0_8px_currentColor]' : ''}`} color={strokeColor} strokeWidth={1.5} />
+      <div className={`relative w-28 h-28 rounded-full flex items-center justify-center mb-6 transition-all duration-500 ease-in-out ${isActive || isSpeaking ? 'avatar-ring ' + ringClass : 'opacity-40 blur-[1px]'}`}>
+        <Icon className={`w-14 h-14 transition-all duration-300 ${isSpeaking ? 'scale-110' : ''} ${isBlue ? 'text-sky-400 drop-shadow-[0_0_10px_rgba(56,189,248,0.8)]' : 'text-pink-400 drop-shadow-[0_0_10px_rgba(244,114,182,0.8)]'}`} strokeWidth={1.5} />
       </div>
 
       <div className="flex flex-col items-center text-center">
-        <h2 className={`text-base font-bold uppercase tracking-wider text-white ${isActive || isSpeaking ? glowTextClass : ''}`}>
+        <h2 className={`text-sm font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${isActive || isSpeaking ? glowTextClass : 'text-slate-500'}`}>
           {name}
         </h2>
-        <span className="text-[10px] uppercase tracking-[0.2em] text-neutral-500 mt-1 h-3">
+        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 mt-2 h-4">
           {isSpeaking ? (
-            <span style={{ color: strokeColor }} className="font-bold animate-pulse">Broadcasting</span>
+            <span className={`font-bold animate-pulse ${isBlue ? 'text-sky-400' : 'text-pink-400'}`}>En diffusion</span>
           ) : isActive ? (
-            <span className="text-neutral-400">Processing...</span>
+            <span className="text-slate-400">Analyse...</span>
           ) : (
-            <span className="opacity-0">Standby</span>
+            <span className="opacity-0">En attente</span>
           )}
         </span>
       </div>
